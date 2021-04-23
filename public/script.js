@@ -1,10 +1,12 @@
 // import { Deta } from "deta";
 
+// const { response } = require("express");
+
 // // add your Project Key
 // const deta = Deta("a0m4hdrk_uJDTehfAHFHRjKtYtTSd7HXgApbDi72X")
 // // name your DB
 // const db = deta.Base("tt")
-
+base_url = "https://zoom-autolink.vercel.app/api/";
 data = [
   {
     day: 1,
@@ -147,13 +149,9 @@ console.log(curDay);
 
 show();
 
-function show() {
-  // db.get('tt').then(data=>{
-  //     //    let open = require('open')
-  //        let ar = JSON.parse(data['value']);
-  //     //    console.log(ar)
-
-  ar = data;
+async function show() {
+  data = await fetch(base_url + "gettt");
+  ar = data.json();
   let tab = `<tr>
         	<th>Day</th>
           <th>Start</th>
