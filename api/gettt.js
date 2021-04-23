@@ -8,9 +8,9 @@ const db = deta.Base("tt")
 module.exports = async function getlink(req,res){
 
     db.get('tt').then(data=>{
-       let ar = JSON.parse(data['value']);
+        let ar = (data['value']);
        res.send(ar);
     }).catch(err=>{
-        res.send(err.response.body)
+        res.send(err)
     })
 }
