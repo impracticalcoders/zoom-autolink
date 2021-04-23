@@ -150,7 +150,7 @@ console.log(curDay);
 show();
 
 async function show() {
-  data = await fetch(base_url + "gettt");
+  data = await fetch("/api/gettt");
   ar = data.json();
   let tab = `<tr>
         	<th>Day</th>
