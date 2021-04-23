@@ -151,7 +151,8 @@ show();
 
 async function show() {
   data = await fetch("/api/gettt");
-  ar = data.json();
+  ar = await data.json();
+  // console.log(ar)
   let tab = `<tr>
         	<th>Day</th>
           <th>Start</th>
