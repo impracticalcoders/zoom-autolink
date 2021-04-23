@@ -17,7 +17,7 @@ app.post('/api/updatett',async (req,res)=>{
             tt[i]['id'] = `${obj['dayName']}${obj['start']}${obj['end']}`
         }
         // console.log(tt);
-        await db.put(req.body['tt'],'tt');
+        await db.put(tt,'tt');
         res.sendStatus(200)
     }
     catch(err){
