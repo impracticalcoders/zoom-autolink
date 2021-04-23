@@ -7,120 +7,7 @@
 // // name your DB
 // const db = deta.Base("tt")
 base_url = "https://zoom-autolink.vercel.app/api/";
-data = [
-  {
-    day: 1,
-    start: 1110,
-    end: 1210,
-    link: "https://zoom.us/j/95780036792?pwd=a1BDOWM3VWtCQmh3aGs5bjRFc2tOZz09",
-    dayName: "monday",
-  },
-  {
-    day: 1,
-    start: 1210,
-    end: 1310,
-    link: "https://zoom.us/j/94435902493?pwd=RmM2OFYwWmFpWkh0VnRCVWljdW1QZz09",
-    dayName: "monday",
-  },
-  {
-    day: 2,
-    start: 900,
-    end: 1000,
-    link: "https://a.impartus.com/ilc/#/home",
-    dayName: "tuesday",
-  },
-  {
-    day: 2,
-    start: 1000,
-    end: 1100,
-    link: "https://zoom.us/j/92578754633?pwd=VjdCdDFXckExeW8rUiszeUF4MFFRZz09",
-    dayName: "tuesday",
-  },
-  {
-    day: 2,
-    start: 1410,
-    end: 1510,
-    link: "https://zoom.us/j/99462496644?pwd=LzYzWmNwNnRKVXJUMnBaMGk3b1dZUT09",
-    dayName: "tuesday",
-  },
-  {
-    day: 3,
-    start: 900,
-    end: 1000,
-    link: "https://zoom.us/j/91206432020?pwd=OW1nZ3QwQUhuS3FsVjgzV25keFFTQT09",
-    dayName: "wednesday",
-  },
-  {
-    day: 3,
-    start: 1000,
-    end: 1100,
-    link: "https://zoom.us/j/93308771793?pwd=V2J6cmxac0R5K1gxVnFtL0dLZER1dz09",
-    dayName: "wednesday",
-  },
-  {
-    day: 3,
-    start: 1110,
-    end: 1310,
-    link: "https://zoom.us/j/96897654050?pwd=YVNCV2RnUTdHcGJ4VnR3bXhOUEQ2QT09",
-    dayName: "wednesday",
-  },
-  {
-    day: 3,
-    start: 1410,
-    end: 1510,
-    link: "https://zoom.us/j/93953294431?pwd=Ky93eXpKeW5uQTlCM2NkL2JkcUtzdz09",
-    dayName: "wednesday",
-  },
-  {
-    day: 4,
-    start: 900,
-    end: 1000,
-    link: "https://zoom.us/j/98428393398?pwd=VWpvVVZycko0U0hVdmI5TkZrWHhNQT09",
-    dayName: "thursday",
-  },
-  {
-    day: 4,
-    start: 1110,
-    end: 1210,
-    link: "https://zoom.us/j/99193553987?pwd=ZU0yV1dLRHRXN1lyRk1EZlJEOU9vQT09",
-    dayName: "thursday",
-  },
-  {
-    day: 4,
-    start: 1210,
-    end: 1310,
-    link: "https://a.impartus.com/ilc/#/home",
-    dayName: "thursday",
-  },
-  {
-    day: 4,
-    start: 1410,
-    end: 1510,
-    link: "https://zoom.us/j/96046122566?pwd=VzUzaVZQbUFHcG5aRXFJd1Fna1ZTdz09",
-    dayName: "thursday",
-  },
-  {
-    day: 5,
-    start: 1000,
-    end: 1100,
-    link: "https://a.impartus.com/ilc/#/home",
-    dayName: "friday",
-  },
-  {
-    day: 5,
-    start: 1110,
-    end: 1210,
-    link: "https://zoom.us/j/95266656535?pwd=Q3VYWjhFejRwYTl3TzV0SkYvREFudz09",
-    dayName: "friday",
-  },
-  {
-    day: 5,
-    start: 1210,
-    end: 1310,
-    link: "https://zoom.us/j/93561152314?pwd=NElrc241eVBmTXVVLzNPTUc1KzdZZz09",
-    dayName: "friday",
-  },
-];
+data = [];
 
 function getCurdate() {
   // get current local time in milliseconds
@@ -150,8 +37,8 @@ console.log(curDay);
 show();
 
 async function show() {
-  data = await fetch("/api/gettt");
-  ar = await data.json();
+  resp = await fetch("/api/gettt");
+  data = await resp.json();
   // console.log(ar)
   let tab = `<tr>
         	<th>Day</th>
@@ -162,17 +49,17 @@ async function show() {
          </tr>`;
 
   // Loop to access all rows
-  for (let r of ar) {
+  for (let r of data) {
     if (r.day == curDay)
-      tab += `<tr id="${r.dayName + r.start + r.end}"> 
+      tab += `<tr id="${r.id}"> 
     <td>${r.dayName} </td>
     <td>${r.start}</td>
     <td>${r.end}</td> 
-    <td>${r.link}</td>
+    <td><a href="${r.link}">${r.link}</a></td>
     <td><button onclick='show_edit_field(${JSON.stringify(
       r
     )})'>Edit</button></td>
-    <td><button>Delete</button></td>
+    <td><button onclick="delete_link(${r.id})">Delete</button></td>
     </tr>`;
   }
   // Setting innerHTML as tab variable
@@ -183,22 +70,68 @@ function show_edit_field(r) {
   console.log(r);
   // document.getElementById("edit-link-section").style.visibility = "hidden"
 
-  row = `<tr id="${r.dayName + r.start + r.end}"> 
+  row = `<tr id="${r.id}"> 
     <td>${r.dayName} </td>
     <td>${r.start}</td>
     <td>${r.end}</td> 
-    <td><input type="text" id="new_link_${r.dayName + r.start + r.end}"></td>
-    <td><button onclick="save_link(new_link_${
-      r.dayName + r.start + r.end
-    })">Save</button></td>
-    <td><button>Delete</button></td>
+    <td><input type="text" id="new_link_${r.id}"></td>
+    <td><button onclick="save_link(new_link_${r.id})">Save</button></td>
+    <td><button onclick='cancel_edit_field(${JSON.stringify(
+      r
+    )})'>Cancel</button></td>
     </tr>`;
 
-  document.getElementById(r.dayName + r.start + r.end).innerHTML = row;
+  document.getElementById(r.id).innerHTML = row;
 }
 
-function save_link(field_id) {
+function cancel_edit_field(r) {
+  console.log(r);
+  // document.getElementById("edit-link-section").style.visibility = "hidden"
+
+  row = `<tr id="${r.id}"> 
+    <td>${r.dayName} </td>
+    <td>${r.start}</td>
+    <td>${r.end}</td> 
+    <td><a href="${r.link}">${r.link}</a></td>
+    <td><button onclick="show_edit_link(${JSON.stringify(
+      r
+    )})">Edit</button></td>
+    <td><button onclick="delete_link(${r.id})">Delete</button></td>
+    </tr>`;
+
+  document.getElementById(r.id).innerHTML = row;
+}
+
+async function save_link(field_id) {
   console.log(field_id.id);
   new_link = field_id.value;
   console.log(new_link);
+}
+
+async function delete_link(field_id) {
+  console.log(field_id.id);
+  console.log(data.length);
+  consent = confirm("Are you sure you want to delete?");
+  if (!consent) return;
+  for (let i = 0; i < data.length; i++) {
+    if (data[i]["id"] == field_id.id) data.splice(i, 1);
+  }
+  console.log(data.length);
+  body_data = JSON.stringify(data);
+  console.log(body_data);
+  try {
+    const response = await fetch("/api/updatett", {
+      method: "post",
+      body: {
+        tt: body_data,
+      },
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+    console.log("Completed!", response);
+    show();
+  } catch (err) {
+    console.error(`Error: ${err}`);
+  }
 }
