@@ -26,11 +26,12 @@ function getCurdate() {
 module.exports = async function getlink(req,res){
 
     db.get('tt').then(data=>{
-       let open = require('open')
-       console.log(data)
-       let ar = data['value'];
+    //    let open = require('open')
+       let ar = JSON.parse(data['value']);
+    //    console.log(ar)
        for(let i in ar){
            let obj = ar[i];
+        //    console.log(obj['end'])
            let curHr = getCurdate().getHours();
            let curMin = getCurdate().getMinutes();
            let curDay = getCurdate().getDay()

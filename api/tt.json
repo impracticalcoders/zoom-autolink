@@ -1,5 +1,5 @@
-let tt = [
-    {
+
+[{
         "day":1,
         "start":1110,
         "end":1210,
@@ -15,7 +15,7 @@ let tt = [
     },
     {
         "day":2,
-        "start":0900,
+        "start":900,
         "end":1000,
         "link":"https://a.impartus.com/ilc/#/home",
         "dayName":"tuesday"
@@ -36,7 +36,7 @@ let tt = [
     },
     {
         "day":3,
-        "start":0900,
+        "start":900,
         "end":1000,
         "link":"https://zoom.us/j/91206432020?pwd=OW1nZ3QwQUhuS3FsVjgzV25keFFTQT09",
         "dayName":"wednesday"
@@ -64,7 +64,7 @@ let tt = [
     },
     {
         "day":4,
-        "start":0900,
+        "start":900,
         "end":1000,
         "link":"https://zoom.us/j/98428393398?pwd=VWpvVVZycko0U0hVdmI5TkZrWHhNQT09",
         "dayName":"thursday"
@@ -110,11 +110,6 @@ let tt = [
         "end":1310,
         "link":"https://zoom.us/j/93561152314?pwd=NElrc241eVBmTXVVLzNPTUc1KzdZZz09",
         "dayName":"friday"
-    },
-
+    }
 
 ]
-
-
-
-module.exports = tt;
