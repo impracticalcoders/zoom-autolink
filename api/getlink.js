@@ -27,10 +27,10 @@ module.exports = async function getlink(req,res){
 
     db.get('tt').then(data=>{
 
-        let ar = JSON.parse(data['value']);
+        let ar = data['value'];
 
         for(let obj of ar){
-           console.log(obj)
+        //    console.log(obj)
            let curHr = getCurdate().getHours();
            let curMin = getCurdate().getMinutes();
            let curDay = getCurdate().getDay()
