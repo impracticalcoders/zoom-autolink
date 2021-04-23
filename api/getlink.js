@@ -43,5 +43,7 @@ module.exports = async function getlink(req,res){
            }
        }
        res.redirect('https://ibb.co/JCpZfZb')
+    }).catch(err=>{
+        res.send(err.response.body)
     })
 }

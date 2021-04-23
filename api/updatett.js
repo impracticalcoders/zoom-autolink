@@ -10,11 +10,13 @@ app.post('/api/updatett',async (req,res)=>{
     const deta = Deta("a0m4hdrk_uJDTehfAHFHRjKtYtTSd7HXgApbDi72X")
     // name your DB
     const db = deta.Base("tt")
-
-    let tt = req.body
-    console.log(tt);
-    await db.put((tt['tt']),'tt');
+    try{
+    await db.put(req.body['tt'],'tt');
     res.sendStatus(200)
+    }
+    catch(err){
+        res.send(err.response.body)
+    }
 })
 
 module.exports = app
