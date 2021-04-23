@@ -1,9 +1,9 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-app.use(express.json());
+// app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors());
+// app.use(cors());
 app.post('/api/updatett',async (req,res)=>{
 
     const { Deta } = require("deta")
@@ -13,8 +13,10 @@ app.post('/api/updatett',async (req,res)=>{
     const db = deta.Base("tt")
     try{
         let tt = JSON.parse(req.body['tt'])
+        
         for(let i in tt){
             let obj = tt[i];
+            console.log(obj)
             tt[i]['id'] = `${obj['dayName']}${obj['start']}${obj['end']}`
         }
         // console.log(tt);

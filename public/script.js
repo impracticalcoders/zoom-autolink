@@ -1,11 +1,4 @@
-// import { Deta } from "deta";
 
-// const { response } = require("express");
-
-// // add your Project Key
-// const deta = Deta("a0m4hdrk_uJDTehfAHFHRjKtYtTSd7HXgApbDi72X")
-// // name your DB
-// const db = deta.Base("tt")
 base_url = "https://zoom-autolink.vercel.app/api/";
 data = [];
 
@@ -120,11 +113,12 @@ async function delete_link(field_id) {
   body_data = JSON.stringify(data);
   console.log(body_data);
   try {
+    
+    var urlencoded = new URLSearchParams();
+    urlencoded.append('tt',body_data)
     const response = await fetch("/api/updatett", {
       method: "post",
-      body: {
-        tt: body_data,
-      },
+      body: urlencoded,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
