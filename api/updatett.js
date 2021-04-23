@@ -11,8 +11,14 @@ app.post('/api/updatett',async (req,res)=>{
     // name your DB
     const db = deta.Base("tt")
     try{
-    await db.put(req.body['tt'],'tt');
-    res.sendStatus(200)
+        let tt = JSON.parse(req.body['tt'])
+        for(let i in tt){
+            let obj = tt[i];
+            tt[i]['id'] = `${obj['dayName']}${obj['start']}${obj['end']}`
+        }
+        // console.log(tt);
+        await db.put(req.body['tt'],'tt');
+        res.sendStatus(200)
     }
     catch(err){
         res.send(err.response.body)

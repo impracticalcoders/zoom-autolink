@@ -26,22 +26,22 @@ function getCurdate() {
 module.exports = async function getlink(req,res){
 
     db.get('tt').then(data=>{
-    //    let open = require('open')
-       let ar = JSON.parse(data['value']);
-    //    console.log(ar)
-       for(let i in ar){
-           let obj = ar[i];
-        //    console.log(obj['end'])
+
+        let ar = JSON.parse(data['value']);
+
+        for(let obj of ar){
+           console.log(obj)
            let curHr = getCurdate().getHours();
            let curMin = getCurdate().getMinutes();
            let curDay = getCurdate().getDay()
            let curTime = curHr*100+curMin
            if(obj['start']<=curTime && curTime<=obj['end'] && obj['day'] == curDay ){
-                // open(obj['link'],{app:'zoom'})
                 res.redirect(obj['link'])
                 return ;
            }
        }
+       
+       //404 no active class found
        res.redirect('https://ibb.co/JCpZfZb')
     }).catch(err=>{
         res.send(err.response.body)
