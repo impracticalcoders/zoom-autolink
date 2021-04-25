@@ -1,7 +1,7 @@
 const { Deta } = require("deta")
 
 // add your Project Key
-const deta = Deta("a0m4hdrk_uJDTehfAHFHRjKtYtTSd7HXgApbDi72X")
+const deta = Deta(process.env.PROJECT_API_KEY)
 // name your DB
 const db = deta.Base("tt")
 
