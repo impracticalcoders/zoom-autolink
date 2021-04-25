@@ -18,13 +18,15 @@ The service is written in NodeJS and the webpage designed *(barely)* using HTML 
 
     `npm  i -g vercel`
     
-2. Create your Deta DB and place the API key in your .env file
+2. Create your Deta DB and name it as tt
 
-3. Install dependencies
+3. place the API key in your vercel environment variables
+
+4. Install dependencies
 
     `npm i `
  
-4. Setup your Vercel dev environment
+5. Setup your Vercel dev environment
 
     `vercel dev`
     
@@ -36,6 +38,6 @@ The service is written in NodeJS and the webpage designed *(barely)* using HTML 
       - **Development Command:** *Hit Enter key to leave as is*
     - Launch your server in the browser at the specified port.
     
-5. You're all set to go, customize the functions and add some design to the webpage to use this for yourself/your class.
+6. You're all set to go, customize the functions and add some design to the webpage to use this for yourself/your class.
 
 **Do leave a 🌟 if you liked it**
