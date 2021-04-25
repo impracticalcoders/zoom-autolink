@@ -20,7 +20,8 @@ The service is written in NodeJS and the webpage designed *(barely)* using HTML 
     
 2. Create your Deta DB and name it as tt
 
-3. place the API key in your vercel environment variables
+3. obtain the API KEY and run this command 
+   vercel secrets add PROJECT_API_KEY Your_API_Key_Here
 
 4. Install dependencies
 
