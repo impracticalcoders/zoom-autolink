@@ -10,8 +10,8 @@ The service is written in NodeJS and the webpage designed *(barely)* using HTML 
 | Endpoint           | Type | Description                                |
 |--------------------|------|--------------------------------------------|
 | /                  | GET  | Redirects to your lecture                  |
-| /updatett          | POST | Replaces the list of links at your Deta DB |
-| /api/updatett.html | GET  | Basic webpage for CRUD of links daywise    |
+| /api/updatett          | POST | Replaces the list of links at your Deta DB |
+| /updatett.html | GET  | Basic webpage for CRUD of links daywise    |
 
 ## Usage guidelines
 1. Install Vercel CLI
