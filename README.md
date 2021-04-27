@@ -10,18 +10,19 @@ The service is written in NodeJS and the webpage designed *(barely)* using HTML 
 | Endpoint           | Type | Description                                |
 |--------------------|------|--------------------------------------------|
 | /                  | GET  | Redirects to your lecture                  |
-| /updatett          | POST | Replaces the list of links at your Deta DB |
-| /api/updatett.html | GET  | Basic webpage for CRUD of links daywise    |
+| /api/updatett          | POST | Replaces the list of links at your Deta DB |
+| /updatett.html | GET  | Basic webpage for CRUD of links daywise    |
 
 ## Usage guidelines
 1. Install Vercel CLI
 
     `npm  i -g vercel`
     
-2. Create your Deta DB and name it as tt
+2. Create your Deta DB and name it `tt`
 
-3. obtain the API KEY and run this command 
-   vercel secrets add PROJECT_API_KEY Your_API_Key_Here
+3. Obtain the API KEY and add to your Vercel Environment secrets
+
+   `vercel secrets add PROJECT_API_KEY Your_API_Key_Here`
 
 4. Install dependencies
 
