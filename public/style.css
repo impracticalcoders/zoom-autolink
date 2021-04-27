@@ -1,0 +1,88 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.title {
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.content-container {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-family: Arial, Arial, Helvetica, sans-serif;
+}
+
+.top-box {
+    width: 75%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#classes-schedule {
+    border: 1px solid silver;
+    border-radius: 5px;
+    width: 75%;
+    padding: 1rem 1rem;
+    margin: 0 auto;
+   
+}
+
+td, th {
+    padding: 1rem .25rem;
+}
+
+button {
+   border: 1px solid rgb(95, 93, 93);
+   border-radius: 2.5px;
+}
+
+button:hover {
+    cursor: pointer;
+    filter: brightness(75%);
+}
+
+form {
+    border: 1px solid silver;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+
+#add-class {
+    width: fit-content;
+    padding: 1rem;
+}
+
+@media only screen and (max-width: 975px) {
+    .top-box {
+        width: 90%;
+    }
+    #classes-schedule {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 810px) {
+    .top-box {
+        width: 100%;
+    }
+    #classes-schedule {
+        width: 100%;
+    }
+    form {
+        border: none;
+       
+    }
+}
+
+@media only screen and (max-width: 700px)
+

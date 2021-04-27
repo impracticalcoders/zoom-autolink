@@ -6,15 +6,22 @@
         <meta name="viewport" 
               content="width=device-width, initial-scale=1.0" />
         <title>Zoom Class Links</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-    <h1>Today's classes</h1>
-    <div id="loading-indicator">Loading..</div>
-    <div id="add-class">
+    <h1 class="title">Today's classes</h1>
+
+    <div class='content-container'>
+    <div class="top-box">
+       <div id="loading-indicator">Loading..</div>
+       <div id="add-class"> 
+    </div>
+    </div>
+        <!-- table for showing data -->
+        <table id="classes-schedule">
+        </table>
     </div>
     
-        <!-- table for showing data -->
-        <table id="classes-schedule"></table>
         <script src="script.js"></script>
     </body>
 </html>
