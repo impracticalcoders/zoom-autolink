@@ -24,9 +24,9 @@ function getCurdate() {
 }
 
 module.exports = async function getlink(req,res){
-
+    
     db.get('tt').then(data=>{
-
+        // return;
         let ar = data['value'];
 
         for(let obj of ar){
@@ -35,14 +35,17 @@ module.exports = async function getlink(req,res){
            let curMin = getCurdate().getMinutes();
            let curDay = getCurdate().getDay()
            let curTime = curHr*100+curMin
-           if(obj['start']<=curTime && curTime<=obj['end'] && obj['day'] == curDay ){
+           let futureTime = (curHr + Math.floor((curMin+10)/60) )*100 + (curMin+10)%60
+        //    console.log(curTime,futureTime)
+           if(obj['start']<=futureTime && futureTime<=obj['end'] && obj['day'] == curDay ){
                 res.redirect(obj['link'])
                 return ;
            }
        }
        
        //404 no active class found
-       res.redirect('https://ibb.co/JCpZfZb')
+       res.redirect('/404')
+
     }).catch(err=>{
         res.send(err.response.body)
     })
